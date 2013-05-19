@@ -48,7 +48,7 @@ class CardWindowManagerState : public QState
 public:
 	CardWindowManagerState(CardWindowManager* wm);
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event) {}
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {}
@@ -78,7 +78,8 @@ public:
 
     virtual bool handleKeyNavigation(QKeyEvent* keyEvent) { return true; }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     virtual void handleTouchBegin(QTouchEvent *e);
     virtual void handleTouchEnd(QTouchEvent *e);
     virtual void handleTouchUpdate(QTouchEvent *e);
@@ -102,7 +103,7 @@ public:
 	MinimizeState(CardWindowManager* wm) 
 				: CardWindowManagerState(wm) { setObjectName("Minimize"); }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* event);
@@ -119,7 +120,8 @@ public:
 
     virtual bool handleKeyNavigation(QKeyEvent* keyEvent);
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     virtual void handleTouchBegin(QTouchEvent *e);
     virtual void handleTouchEnd(QTouchEvent *e);
     virtual void handleTouchUpdate(QTouchEvent *e);
@@ -141,7 +143,7 @@ class MaximizeState : public CardWindowManagerState
 public:
 	MaximizeState(CardWindowManager* wm);
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 #endif // QT_VERSION < 5.0.0
 
@@ -209,7 +211,7 @@ public:
 	PreparingState(CardWindowManager* wm)
 		: CardWindowManagerState(wm) { setObjectName("Preparing"); }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 #endif // QT_VERSION < 5.0.0
 
@@ -218,7 +220,8 @@ public:
 
 	virtual bool supportLauncherOverlay() const;
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     virtual void handleTouchBegin(QTouchEvent *e);
 #endif
 
@@ -234,7 +237,7 @@ public:
 	LoadingState(CardWindowManager* wm)
 		: CardWindowManagerState(wm) { setObjectName("Loading"); }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 #endif // QT_VERSION < 5.0.0
 
@@ -246,7 +249,8 @@ public:
 
     virtual void relayout(const QRect& r, bool animate);
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     virtual void handleTouchBegin(QTouchEvent *e);
 #endif
 
@@ -276,14 +280,15 @@ public:
 	ReorderState(CardWindowManager* wm)
 		: CardWindowManagerState(wm), m_grid(0) { setObjectName("Reorder"); }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5,0,0))
+#if (QT_VERSION < QT_VERSION_CHECK(5,0,0)) && 0
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent* event);
 #endif // QT_VERSION < 5.0.0
 
 	virtual void animationsFinished();
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     virtual void handleTouchEnd(QTouchEvent *e);
     virtual void handleTouchUpdate(QTouchEvent *e);
 #endif

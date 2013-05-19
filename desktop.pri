@@ -1,3 +1,8 @@
+### eqmake4 was here ###
+CONFIG -= debug_and_release debug
+#CONFIG += release
+CONFIG += debug
+
 # @@@LICENSE
 #
 #      Copyright (c) 2010-2012 Hewlett-Packard Development Company, L.P.
@@ -15,7 +20,7 @@
 # limitations under the License.
 #
 # LICENSE@@@
-CONFIG += debug
+CONFIG += 
 
 debug {
 	QMAKE_MAKEFILE = Makefile.Ubuntu
@@ -62,10 +67,10 @@ INCLUDEPATH += \
 	$$(LUNA_STAGING)/include/QtOpenGL \
 	$$(LUNA_STAGING)/include/QtSql \
 	$$(LUNA_STAGING)/include/QtDeclarative \
-	$$(LUNA_STAGING)/include/ime \
+	$$(LUNA_STAGING)/usr/include/ime \
 	$$(LUNA_STAGING)/usr/include \
 	$$(LUNA_STAGING)/include \
-	$$(LUNA_STAGING)/include/luna-sysmgr-common \
+	$$(LUNA_STAGING)/usr/include/luna-sysmgr-common \
 
 
 #install

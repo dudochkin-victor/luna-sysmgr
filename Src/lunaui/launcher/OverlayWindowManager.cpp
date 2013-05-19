@@ -929,13 +929,13 @@ void OverlayWindowManager::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 	ev.time = Time::curSysTimeMs();
 
 	QPointF diff = event->pos() - event->buttonDownPos(Qt::LeftButton);
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	ev.setClicked((diff.manhattanLength() <= kSlopFactorForClicks) && !event->canceled());
 #else
     ev.setClicked((diff.manhattanLength() <= kSlopFactorForClicks) && event->isAccepted());
 #endif
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
     if(!event->canceled()){
 #else
     if(event->isAccepted()){

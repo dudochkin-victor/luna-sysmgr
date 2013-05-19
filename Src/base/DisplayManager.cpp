@@ -3139,11 +3139,11 @@ bool DisplayManager::handleEvent(QEvent *event)
     // pass the ringer and banner messages, no effect on display state at all
     // also the "media" keys from headset and avrcp
 // QT5_TODO: Qt::ExternalKeyboardModifier not present in Qt5
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-    if (keyEvent && !(keyEvent->modifiers() & Qt::ExternalKeyboardModifier) &&
-#else
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//    if (keyEvent && !(keyEvent->modifiers() & Qt::ExternalKeyboardModifier) &&
+//#else
     if (keyEvent &&
-#endif
+//#endif
             (KEYS::Key_Ringer == keyEvent->key() ||
 			Qt::Key_VolumeDown == keyEvent->key() ||
 			Qt::Key_VolumeUp == keyEvent->key() ||
@@ -3166,11 +3166,11 @@ bool DisplayManager::handleEvent(QEvent *event)
     }
 
     // Always allow a mouse cancel event to go through
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-    if (mouseEvent && mouseEvent->type() == QEvent::MouseButtonRelease && mouseEvent->canceled()) {
-#else
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//    if (mouseEvent && mouseEvent->type() == QEvent::MouseButtonRelease && mouseEvent->canceled()) {
+//#else
     if (mouseEvent && mouseEvent->type() == QEvent::MouseButtonRelease && !mouseEvent->isAccepted()) {
-#endif
+//#endif
         g_debug("%s: Allowing canceled event at %d, %d through", __PRETTY_FUNCTION__, mouseEvent->x(), mouseEvent->y());
         return false;
     }
@@ -3277,11 +3277,11 @@ bool DisplayManager::handleEvent(QEvent *event)
     // if the display is off drop the following events
     if (currentState() == DisplayStateOff || currentState() == DisplayStateOffOnCall) {
 	    // drop the gestures
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-        if (keyEvent && (keyEvent->isGestureKey() && KEYS::Key_CoreNavi_Home != keyEvent->key()) ) {
-#else
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//        if (keyEvent && (keyEvent->isGestureKey() && KEYS::Key_CoreNavi_Home != keyEvent->key()) ) {
+//#else
         if (keyEvent && (keyEvent->type() == QEvent::Gesture && KEYS::Key_CoreNavi_Home != keyEvent->key()) ) {
-#endif
+//#endif
 		    return true;
 	    }
     }
@@ -3312,11 +3312,11 @@ bool DisplayManager::handleEvent(QEvent *event)
     }
 
 // QT5_TODO: Are these equivalent?
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//    if (keyEvent && keyEvent->key() == KEYS::Key_Power) {
+//#else
     if (keyEvent && keyEvent->key() == KEYS::Key_Power) {
-#else
-    if (keyEvent && keyEvent->key() == KEYS::Key_HardPower) {
-#endif
+//#endif
 
 		if (keyEvent->modifiers() & Qt::GroupSwitchModifier) {
 			if (keyEvent->type() == QEvent::KeyPress) {
@@ -3354,16 +3354,16 @@ bool DisplayManager::handleEvent(QEvent *event)
 			&& currentState() != DisplayStateDockMode) {
 
 // QT5_TODO: Qt::ExternalKeyboardModifier not present in Qt5
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-		if (keyEvent->modifiers() & Qt::ExternalKeyboardModifier)
-		{
-			g_message("%s: sending user activity external input event on key down", __PRETTY_FUNCTION__);
-			m_currentState->handleEvent(DisplayEventUserActivityExternalInput);
-		}
-        else if (m_hasSlider || currentState() != DisplayStateOff || keyEvent->key() == KEYS::Key_Power)
-#else
-        if (m_hasSlider || currentState() != DisplayStateOff || keyEvent->key() == KEYS::Key_HardPower)
-#endif
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//		if (keyEvent->modifiers() & Qt::ExternalKeyboardModifier)
+//		{
+//			g_message("%s: sending user activity external input event on key down", __PRETTY_FUNCTION__);
+//			m_currentState->handleEvent(DisplayEventUserActivityExternalInput);
+//		}
+//        else if (m_hasSlider || currentState() != DisplayStateOff || keyEvent->key() == KEYS::Key_Power)
+//#else
+        if (m_hasSlider || currentState() != DisplayStateOff || keyEvent->key() == KEYS::Key_Power)
+//#endif
 		{
 			g_message("%s: sending user activity event on key down", __PRETTY_FUNCTION__);
 			m_currentState->handleEvent(DisplayEventUserActivity);

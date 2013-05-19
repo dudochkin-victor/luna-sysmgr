@@ -375,11 +375,11 @@ bool CoreNaviManager::handleEvent(QEvent *event) {
 		keyEvent = static_cast<QKeyEvent*> (event);
 	}
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	if (keyEvent && keyEvent->isGestureKey()) {
-#else
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//	if (keyEvent && keyEvent->isGestureKey()) {
+//#else
     if (keyEvent && keyEvent->type() == QEvent::Gesture) {
-#endif
+//#endif
 		switch (keyEvent->key()) {
         case KEYS::Key_CoreNavi_QuickLaunch:
         case KEYS::Key_CoreNavi_Launcher:

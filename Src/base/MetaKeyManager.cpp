@@ -38,11 +38,11 @@ bool MetaKeyManager::handleEvent(QEvent* event)
     // for non-frameworked text edit fields.
 
 // QT5_TODO: Qt::ExternalKeyboardModifier not present in Qt5
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-    static Qt::KeyboardModifiers commandModifier = (Qt::ControlModifier|Qt::ExternalKeyboardModifier);
-#else
+//#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//    static Qt::KeyboardModifiers commandModifier = (Qt::ControlModifier|Qt::ExternalKeyboardModifier);
+//#else
     static Qt::KeyboardModifiers commandModifier = (Qt::ControlModifier);
-#endif
+//#endif
     if (keyEvent->modifiers() & Qt::MetaModifier 
         || (keyEvent->modifiers() & commandModifier) == commandModifier)
     { 

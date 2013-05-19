@@ -681,7 +681,7 @@ void CardHostWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 void CardHostWindow::hoverMoveEvent(QGraphicsSceneHoverEvent* event)
 {
 	event->accept();
-
+#if 0
 	Event evt;
 	evt.type = Event::MouseHover;
 	QRectF br = boundingRect();
@@ -693,6 +693,7 @@ void CardHostWindow::hoverMoveEvent(QGraphicsSceneHoverEvent* event)
 	if (m_channel)
 		m_channel->sendAsyncMessage(new View_InputEvent(routingId(),
 								SysMgrEventWrapper(&evt)));
+#endif
 }
 
 void CardHostWindow::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
@@ -764,7 +765,7 @@ void CardHostWindow::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 
 	bool initial = m_penInPlayButton;
 	
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
     m_penInPlayButton = (rect.contains(pos) && !event->canceled());
 #else
     m_penInPlayButton = (rect.contains(pos) && event->isAccepted());

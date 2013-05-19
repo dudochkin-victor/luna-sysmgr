@@ -30,7 +30,7 @@
 #include "Settings.h"
 #include "DisplayManager.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 static const int kQbstractAnimationTimeout = QAbstractAnimation::animationTimerInterval();
 #else
 // QT5_TODO
@@ -491,7 +491,7 @@ void KineticScroller::zizz(qreal inV)
 	// Start a periodic timer that will fire every 10 msec
 	m_flickAnimationTimerActive = true;
 	m_flickAnimationTimer.setSingleShot(false);
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	m_flickAnimationTimer.setInterval(QAbstractAnimation::animationTimerInterval());
 #else
 // QT5_TODO

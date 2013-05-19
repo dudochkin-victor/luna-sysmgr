@@ -305,17 +305,17 @@ bool SystemUiController::handleCustomEvent(QEvent* event)
 
 bool SystemUiController::handleKeyEvent(QKeyEvent *event)
 {
-#if !defined(TARGET_EMULATOR) && (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	if (!Preferences::instance()->sysUiEnableNextPrevGestures()) {
-        if (event->key() == KEYS::Key_CoreNavi_Previous) {
-            event->setKey(KEYS::Key_CoreNavi_Back);
-        } else if (event->key() == KEYS::Key_CoreNavi_Next) {
-            event->setKey(KEYS::Key_CoreNavi_Menu);
-		}
-	}
-#else
+//#if !defined(TARGET_EMULATOR) && (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+//	if (!Preferences::instance()->sysUiEnableNextPrevGestures()) {
+//        if (event->key() == KEYS::Key_CoreNavi_Previous) {
+//            event->setKey(KEYS::Key_CoreNavi_Back);
+//        } else if (event->key() == KEYS::Key_CoreNavi_Next) {
+//            event->setKey(KEYS::Key_CoreNavi_Menu);
+//		}
+//	}
+//#else
     // QT5_TODO: QKeyEvent::setKey() has been removed, what could we use?
-#endif
+//#endif
 
 	if (event->type() == QEvent::KeyPress) {
 		switch (event->key()) {

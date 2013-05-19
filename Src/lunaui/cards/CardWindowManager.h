@@ -88,7 +88,7 @@ public:
 
 protected:
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
     virtual void mousePressEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
@@ -140,7 +140,7 @@ private:
 	void performPostModalWindowRemovedActions(Window* win, bool restore = true);
 	void initiateRemovalOfActiveModalWindow();
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	void handleMousePressMinimized(QGraphicsSceneMouseEvent* event);
 
 	void handleMouseMoveMinimized(QGraphicsSceneMouseEvent* event);
@@ -268,7 +268,8 @@ private:
 
     void markFirstCardDone();
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
     bool handleTouchBegin(QTouchEvent *e);
     bool handleTouchEnd(QTouchEvent *e);
     bool handleTouchUpdate(QTouchEvent *e);

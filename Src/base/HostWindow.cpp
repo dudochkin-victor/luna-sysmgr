@@ -352,6 +352,7 @@ void HostWindow::removeInputFocus()
 
 void HostWindow::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
+#if 0
     Event ev;
     ev.type = Event::MouseWheel;
 
@@ -372,4 +373,5 @@ void HostWindow::wheelEvent(QGraphicsSceneWheelEvent *event)
         m_channel->sendAsyncMessage(new View_InputEvent(routingId(),
                                                         SysMgrEventWrapper(&ev)));
     }
+#endif
 }

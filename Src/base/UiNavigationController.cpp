@@ -72,7 +72,7 @@ bool UiNavigationController::isUiNavigationEvent(QEvent* event) const
         return false;
 
     QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
     if (!keyEvent->modifiers() & Qt::ExternalKeyboardModifier)
         return false;
 #else

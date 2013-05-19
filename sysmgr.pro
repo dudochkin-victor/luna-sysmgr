@@ -1,3 +1,7 @@
+### eqmake4 was here ###
+CONFIG -= debug_and_release debug
+CONFIG += release
+
 # @@@LICENSE
 #
 #      Copyright (c) 2010-2013 Hewlett-Packard Development Company, L.P.
@@ -40,7 +44,7 @@ TARGET_TYPE =
 
 ENV_BUILD_TYPE = $$(BUILD_TYPE)
 !isEmpty(ENV_BUILD_TYPE) {
-	CONFIG -= release debug
+	CONFIG -=  debug
 	CONFIG += $$ENV_BUILD_TYPE
 }
 
@@ -591,8 +595,8 @@ linux-g++ {
     }
 }
 
-HEADERS += $${STAGING_INCLUDE_DIR}/ime/IMEData.h \
-    $${STAGING_INCLUDE_DIR}/ime/IMEDataInterface.h
+HEADERS += $${STAGING_DIR}/usr/include/ime/IMEData.h \
+    $${STAGING_DIR}/usr/include/ime/IMEDataInterface.h
 
 contains(CONFIG_BUILD, opengl) {
 	QT += opengl

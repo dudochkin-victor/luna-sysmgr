@@ -1,3 +1,7 @@
+### eqmake4 was here ###
+CONFIG -= debug_and_release debug
+CONFIG += release
+
 # @@@LICENSE
 #
 #      Copyright (c) 2010-2012 Hewlett-Packard Development Company, L.P.

@@ -1238,7 +1238,7 @@ void CardWindowManager::setActiveCardOffScreen(bool fullsize)
 	activeCard->setPosition(pos);
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void CardWindowManager::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	// We may get a second pen down. Just ignore it.
@@ -1369,7 +1369,8 @@ bool CardWindowManager::sceneEvent(QEvent* event)
 	return QGraphicsObject::sceneEvent(event);
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
 void CardWindowManager::slideAllGroupsOnTouchUpdate(int xOffset)
 {
     if (m_groups.empty() || !m_activeGroup) {
@@ -1737,7 +1738,7 @@ void CardWindowManager::handleFlickGestureMinimized(QGestureEvent* event)
 	}
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void CardWindowManager::handleMousePressMinimized(QGraphicsSceneMouseEvent* event)
 {
 	// try to capture the card the user first touched
@@ -2100,7 +2101,7 @@ void CardWindowManager::arrangeWindowsAfterReorderChange(int duration, QEasingCu
 	startAnimations();
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void CardWindowManager::handleMouseReleaseMinimized(QGraphicsSceneMouseEvent* event)
 {
 	if (m_groups.empty() || m_seenFlickOrTap)
@@ -2832,7 +2833,7 @@ QRect CardWindowManager::normalOrScreenBounds(CardWindow* win) const
 
 void CardWindowManager::cancelReorder(bool dueToPenCancel)
 {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	handleMouseReleaseReorder(NULL);
 #else
     handleTouchEndReorder(NULL);

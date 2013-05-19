@@ -40,7 +40,7 @@ CardWindowManagerState::CardWindowManagerState(CardWindowManager* wm)
 {
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void CardWindowManagerState::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	event->accept();
@@ -97,7 +97,8 @@ void CardWindowManagerState::resizeWindow(CardWindow* w, int width, int height)
 	}
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
 void CardWindowManagerState::handleTouchBegin(QTouchEvent *e)
 {
     e->ignore();
@@ -115,7 +116,7 @@ void CardWindowManagerState::handleTouchUpdate(QTouchEvent *e)
 #endif
 
 // --------------------------------------------------------------------------------------------------
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void MinimizeState::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     CardWindowManagerState::mousePressEvent(event);
@@ -193,7 +194,8 @@ void MinimizeState::onEntry(QEvent* event)
 	SystemUiController::instance()->setMaximizedCardWindow(0);
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) &&  0
+#else
 void MinimizeState::handleTouchBegin(QTouchEvent *e)
 {
     e->accept();
@@ -229,7 +231,7 @@ MaximizeState::MaximizeState(CardWindowManager* wm)
 	connect(trans, SIGNAL(triggered()), SLOT(slotIncomingPhoneCall()));
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void MaximizeState::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	// CardWindow should always accept but just in case
@@ -622,7 +624,7 @@ void PreparingState::onEntry(QEvent* event)
 	m_wm->prepareAddWindowSibling(win);
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void PreparingState::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	event->accept();
@@ -659,7 +661,8 @@ bool PreparingState::supportLauncherOverlay() const
 	return false;
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
 void PreparingState::handleTouchBegin(QTouchEvent *e)
 {
     e->accept();
@@ -669,7 +672,7 @@ void PreparingState::handleTouchBegin(QTouchEvent *e)
 
 // --------------------------------------------------------------------------------------------------
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void LoadingState::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	event->accept();
@@ -722,7 +725,8 @@ void LoadingState::onExit(QEvent* event)
 	}
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
 void LoadingState::handleTouchBegin(QTouchEvent *e)
 {
     e->accept();
@@ -756,7 +760,7 @@ void ReorderGrid::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWid
 	painter->setPen(oldPen);
 }
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 void ReorderState::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
 	m_wm->handleMouseMoveReorder(event);
@@ -804,7 +808,8 @@ void ReorderState::onEntry(QEvent* event)
 	SystemUiController::instance()->enterOrExitCardReorder(true);
 }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
+#else
 void ReorderState::handleTouchEnd(QTouchEvent *e)
 {
     e->accept();

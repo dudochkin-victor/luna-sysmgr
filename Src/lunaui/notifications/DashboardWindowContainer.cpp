@@ -244,7 +244,7 @@ void DashboardWindowContainer::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 			Q_EMIT signalItemDragState(true);
 		} else if(m_dashboardManualDrag) {
 			QGraphicsSceneMouseEvent ev;
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
             ev.setCanceled(true);
 #else
             ev.ignore();
@@ -318,7 +318,7 @@ void DashboardWindowContainer::mouseWasGrabbedByParent()
 {
 	// fake a mouse cancel
 	QGraphicsSceneMouseEvent ev;
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 	ev.setCanceled(true);
 #else
     ev.ignore();
@@ -341,7 +341,7 @@ void DashboardWindowContainer::mouseReleaseEvent(QGraphicsSceneMouseEvent* event
 	if (DashboardWindow* w = m_draggedWindow.data()) {
 
 		if(!m_dashboardManualDrag) {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
             if (event->canceled() || w->persistent())
 #else
             if (!event->isAccepted() || w->persistent())
@@ -370,7 +370,7 @@ void DashboardWindowContainer::mouseReleaseEvent(QGraphicsSceneMouseEvent* event
 
 			Event ev;
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0)) && 0
 			if (event->canceled())
 #else
             if (!event->isAccepted())
